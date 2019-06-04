@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './FormItem.css';
-import PropertyBar from '../PropertyBar/PropertyBar';
+import FunctionalButtons from '../FunctionalButtons/FunctionalButtons';
 
 export default class FormItem extends Component {
   static propTypes = {
@@ -13,9 +13,9 @@ export default class FormItem extends Component {
     handleCheckDetailedItem: PropTypes.func.isRequired,
   };
 
-  state = 
-    { displayMenu: false, 
-      
+  state =
+    { displayMenu: false,
+
     };
 
   setDisplayMenu = bool => {
@@ -35,7 +35,7 @@ export default class FormItem extends Component {
           </div>
           <span className="form_item__text">{this.props.item.value}</span>
         </div>
-          <PropertyBar
+          <FunctionalButtons
             id={this.props.item.id}
             handleCheckDetailedItem={this.props.handleCheckDetailedItem}
             handleDeleteItem={this.props.handleDeleteItem}

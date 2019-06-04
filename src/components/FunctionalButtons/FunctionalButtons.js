@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdjust, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import './PropertyBar.css';
+import './FunctionalButtons.css';
 
-const propertyBarPropTypes = {
+const FunctionalButtonsPropTypes = {
   id: PropTypes.string.isRequired,
   handleCheckDetailedItem: PropTypes.func.isRequired,
   handleDeleteItem: PropTypes.func.isRequired,
 };
 
-const PropertyBar = props => (
+const FunctionalButtons = props => (
   <div className="property_bar__component">
 
     <button
@@ -20,15 +20,15 @@ const PropertyBar = props => (
       <FontAwesomeIcon icon={faAdjust} />
     </button>
 
-    <button 
-      className="btn btn-danger property_bar__button" 
+    <button
+      className="btn btn-danger property_bar__button"
       onClick={() => props.handleDeleteItem(props.id)}>
       <FontAwesomeIcon icon={faTrash} />
     </button>
-    
+
   </div>
 );
 
-PropertyBar.propTypes = propertyBarPropTypes;
+FunctionalButtons.propTypes = FunctionalButtonsPropTypes;
 
-export default PropertyBar;
+export default FunctionalButtons;
