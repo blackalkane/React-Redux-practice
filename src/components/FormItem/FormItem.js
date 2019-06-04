@@ -13,28 +13,11 @@ export default class FormItem extends Component {
     handleCheckDetailedItem: PropTypes.func.isRequired,
   };
 
-  state =
-    { displayMenu: false,
-
-    };
-
-  setDisplayMenu = bool => {
-    if (this.state.displayMenu !== bool) {
-      this.setState({ displayMenu: bool });
-    }
-  };
-
   render() {
     return (
       <li
-        className="form_item__component list-group-item form-control"
-        onMouseMove={() => this.setDisplayMenu(true)}
-        onMouseLeave={() => this.setDisplayMenu(false)}>
-        <div className="text-truncate">
-          <div className="form_item__checkout d-inline-block">
-          </div>
-          <span className="form_item__text">{this.props.item.value}</span>
-        </div>
+        className="form_item__component list-group-item form-control">
+          <span>{this.props.item.value}</span>
           <FunctionalButtons
             id={this.props.item.id}
             handleCheckDetailedItem={this.props.handleCheckDetailedItem}

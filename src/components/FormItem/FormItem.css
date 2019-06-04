@@ -9,12 +9,3 @@
 .form_item__component:hover {
   background: var(--background-color);
 }
-
-.form_item__checkout {
-  margin-right: 0.5em;
-  height: 100%;
-}
-
-.form_item__text {
-  vertical-align: super;
-}

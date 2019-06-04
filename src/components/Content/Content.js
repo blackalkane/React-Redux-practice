@@ -31,10 +31,9 @@ class Content extends Component {
     return (
       <div className={this.props.className}>
         <div className="container">
-          <div className="col-12">
+          <div className="col-14">
             <div className="card text-center">
               <div className="card-body">
-                <h5 className="card-title">GG</h5>
                 <p className="card-text">add some message</p>
                 <div className="d-inline-block">
                   <Form handleAddItem={this.props.handleAddItem} />
@@ -47,7 +46,7 @@ class Content extends Component {
               <div className="col-12">
                 <div className="content__messages">
                   <ul className="list-group content__messages__ul">
-                    <DragDropContext onDragEnd={this.onDragEnd}>
+                    <DragDropContext >
                       <Droppable droppableId="droppable">
                         {provided => (
                           <div ref={provided.innerRef}>
