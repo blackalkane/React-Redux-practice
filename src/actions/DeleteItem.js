@@ -1,4 +1,4 @@
-export const DELETE_ITEM = 'Delete item';
+export const DELETE_ITEM = 'Delete';
 
 export const DeleteItem = selectedItemId => ({
   type: DELETE_ITEM,

@@ -1,4 +1,4 @@
-export const ADD_ITEM = 'Add item';
+export const ADD_ITEM = 'Add';
 
 export const AddItem = itemValue => ({
   type: ADD_ITEM,

@@ -1,5 +1,5 @@
 {
-  "name": "just-another-message-app",
+  "name": "message-app",
   "description": "A message app built with React + Redux.",
   "version": "2.0.3",
   "private": true,
