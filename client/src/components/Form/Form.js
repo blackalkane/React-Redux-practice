@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addMessage } from '../../actions';
-const AddMessage = ({ dispatch }) => {
+import './Form.css';
+const Form = ({ dispatch }) => {
   let gg;
 
   return (
-    <div>
-      <form
+    <div className="cover">
+      <h1>add some message</h1>
+      <form className="flex-form"
         onSubmit={e => {
           e.preventDefault();
           if (!gg.value.length) {
@@ -23,11 +25,11 @@ const AddMessage = ({ dispatch }) => {
           placeholder="WE THE NORTH!!!" 
           ref={node => (gg = node)} />
         <div className="col-auto">
-          <button type="submit" className="button_base b03_skewed_slide_in">Add</button>
+          <button type="submit" className="a">Add</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default connect()(AddMessage);
+export default connect()(Form);

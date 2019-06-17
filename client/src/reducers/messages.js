@@ -1,42 +1,37 @@
-import {
-  FETCH_MESSAGES_BEGIN,
-  FETCH_MESSAGES_SUCCESS,
-  FETCH_MESSAGES_FAILURE,
-  ADD_MESSAGE_BEGIN,
-  ADD_MESSAGE_SUCCESS,
-  ADD_MESSAGE_FAILURE,
-  CLEAR_ALL_MESSAGES_BEGIN,
-  CLEAR_ALL_MESSAGES_SUCCESS,
-  CLEAR_ALL_MESSAGES_FAILURE
+import { FETCH_MESSAGES_BEGIN, FETCH_MESSAGES_SUCCESS, FETCH_MESSAGES_FAILURE,
+  ADD_MESSAGE_BEGIN, ADD_MESSAGE_SUCCESS, ADD_MESSAGE_FAILURE,
+  CLEAR_ALL_MESSAGES_BEGIN, CLEAR_ALL_MESSAGES_SUCCESS, CLEAR_ALL_MESSAGES_FAILURE
 } from '../actions';
 
 const initialState = {
   items: [],
-  loading: false,
+  fetching: false,
   error: null
 };
 
 export default function messages(state = initialState, action) {
   switch (action.type) {
+    // fetch
     case FETCH_MESSAGES_BEGIN:
       return {
         ...state,
-        loading: true,
+        fetching: true,
         error: null
       };
     case FETCH_MESSAGES_SUCCESS:
       return {
         ...state,
-        loading: false,
+        fetching: false,
         items: action.payload.messages
       };
     case FETCH_MESSAGES_FAILURE:
       return {
         ...state,
-        loading: false,
+        fetching: false,
         error: action.payload.error,
         items: []
       };
+    // add
     case ADD_MESSAGE_BEGIN:
       return {
         ...state,
@@ -45,7 +40,7 @@ export default function messages(state = initialState, action) {
     case ADD_MESSAGE_SUCCESS:
       return {
         ...state,
-        items: state.items.concat(action.payload.message),
+        items: [...state.items, action.payload.message],
         error: null
       };
     case ADD_MESSAGE_FAILURE:
@@ -53,23 +48,24 @@ export default function messages(state = initialState, action) {
         ...state,
         error: action.payload.error
       };
+    // delete all
     case CLEAR_ALL_MESSAGES_BEGIN:
       return {
         ...state,
-        loading: true,
+        fetching: true,
         error: null
       };
     case CLEAR_ALL_MESSAGES_SUCCESS:
       return {
         ...state,
-        loading: false,
+        fetching: false,
         error: null,
         items: []
       };
     case CLEAR_ALL_MESSAGES_FAILURE:
       return {
         ...state,
-        loading: false,
+        fetching: false,
         error: action.payload.error
       };
     default:

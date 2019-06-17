@@ -1,80 +1,59 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
-.button_base {
-    margin: 0;
-    border: 0;
-    font-size: 18px;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    margin-top: -25px;
-    margin-left: -100px;
-    width: 200px;
-    height: 50px;
-    text-align: center;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-user-select: none;
-    cursor: default;
-}
-
-.button_base:hover {
-    cursor: pointer;
-}
-
-.b03_skewed_slide_in {
-    overflow: hidden;
-    border: #000000 solid 1px;
-}
-
-.b03_skewed_slide_in div {
-    position: absolute;
-    text-align: center;
+.cover  {
+    height: 40vh;
     width: 100%;
-    height: 50px;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    padding: 10px;
-}
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.05)), to(rgba(0,0,0,0)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
+    padding: 20px 50px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+  }
+  
+  .flex-form {
+    display: -webkit-box;
+    display: flex;
+    z-index: 10;
+    position: relative;
+    width: 500px;
+    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .flex-form > * {
+    border: 0;
+    padding: 0 0 0 10px;
+    background: #fff;
+    line-height: 50px;
+    font-size: 1rem;
+    border-radius: 0;
+    outline: 0;
+    -webkit-appearance: none;
+  }
+  
+  input[type="text"] {
+    flex-basis: 500px;
+  }
 
-.b03_skewed_slide_in div:nth-child(1) {
-    color: #000000;
-    background-color: #ffffff;
-}
-
-.b03_skewed_slide_in div:nth-child(2) {
-    background-color: #000000;
-    width: 230px;
-    transition: all 0.2s ease;
-    -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease;
-    transform: translate(-250px, 0px) skewX(-30deg);
-    -webkit-transform: translate(-250px, 0px) skewX(-30deg);
-    -moz-transform: translate(-250px, 0px) skewX(-30deg);
-}
-
-.b03_skewed_slide_in div:nth-child(3) {
-    color: #ffffff;
-    left: -200px;
-    transition: left 0.2s ease;
-    -webkit-transition: left 0.2s ease;
-    -moz-transition: left 0.2s ease;
-}
-
-.b03_skewed_slide_in:hover div:nth-child(2) {
-    transition: all 0.5s ease;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    transform: translate(-15px, 0px) skewX(-30deg);
-    -webkit-transform: translate(-15px, 0px) skewX(-30deg);
-    -moz-transform: translate(-15px, 0px) skewX(-30deg);
-}
-
-.b03_skewed_slide_in:hover div:nth-child(3) {
-    left: 0px;
-    transition: left 0.30000000000000004s ease;
-    -webkit-transition: left 0.30000000000000004s ease;
-    -moz-transition: left 0.30000000000000004s ease;
-}
+  .a {
+    background: #ef3f5a;
+    border: 1px solid #ef3f5a;
+    color: #fff;
+    padding: 0 30px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  
+  .a:hover {
+    background: #d73851;
+    border: 10px solid #d73851;
+  }

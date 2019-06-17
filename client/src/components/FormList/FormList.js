@@ -1,28 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Message from '../Message';
+import FormItem from '../FormItem/FormItem';
 import { fetchMessages } from '../../actions';
-import './MessageList.css';
-class MessageList extends Component {
+import './FormList.css';
+class FormList extends Component {
   componentDidMount() {
     this.props.dispatch(fetchMessages());
   }
 
   render() {
-    const { messages, error, loading } = this.props;
+    const { messages, error, fetching } = this.props;
     if (error) {
       return <div>Error! {error.message}</div>;
     }
-    if (loading) {
-      return <div>Loading....</div>;
+    if (fetching) {
+      return <div>fetching....</div>;
     }
     return (
       <div className="row justify-content-center">
         <div className="col-12">
           <div className="content__messages">
-            <ul className="list-group content__messages__ul">
+            <ul className="list-group">
               {messages.map(message => (
-                <Message key={message.id} msg={message.data.msg} />
+                <FormItem key={message.id} msg={message.data.msg} />
               ))}
             </ul>
           </div>
@@ -34,8 +34,8 @@ class MessageList extends Component {
 
 const mapSateToProps = state => ({
   messages: state.messages.items,
-  loading: state.messages.loading,
-  errno: state.messages.error
+  fetching: state.messages.fetching,
+  error: state.messages.error
 });
 
-export default connect(mapSateToProps)(MessageList);
+export default connect(mapSateToProps)(FormList);

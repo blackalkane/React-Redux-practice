@@ -10,5 +10,5 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/messages', messagesRouter);
 
-const port = 5000;
+const port = 9000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
