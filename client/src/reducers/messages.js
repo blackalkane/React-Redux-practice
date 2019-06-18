@@ -1,5 +1,6 @@
 import { FETCH_MESSAGES_BEGIN, FETCH_MESSAGES_SUCCESS, FETCH_MESSAGES_FAILURE,
   ADD_MESSAGE_BEGIN, ADD_MESSAGE_SUCCESS, ADD_MESSAGE_FAILURE,
+  REMOVE_MESSAGE_BEGIN, REMOVE_MESSAGE_SUCCESS, REMOVE_MESSAGE_FAILURE,
   CLEAR_ALL_MESSAGES_BEGIN, CLEAR_ALL_MESSAGES_SUCCESS, CLEAR_ALL_MESSAGES_FAILURE
 } from '../actions';
 
@@ -66,6 +67,23 @@ export default function messages(state = initialState, action) {
       return {
         ...state,
         fetching: false,
+        error: action.payload.error
+      };
+    // delete one
+    case REMOVE_MESSAGE_BEGIN:
+      return {
+        ...state,
+        error: null
+      };
+    case REMOVE_MESSAGE_SUCCESS:
+      return {
+        ...state,
+        items: state.items.filter(({ id }) => id !== action.payload.id),
+        error: null
+      };
+    case REMOVE_MESSAGE_FAILURE:
+      return {
+        ...state,
         error: action.payload.error
       };
     default:

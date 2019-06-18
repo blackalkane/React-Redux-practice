@@ -44,7 +44,7 @@ class Store {
     return true;
   }
 
-  delete(id) {
+  deleteItem(id) {
     var index;
     if (this.data.length === 0) return false;
     for (var i = 0; i < this.data.length; i++) {
@@ -81,9 +81,9 @@ router.post('/add', function(req, res, next) {
   }
 });
 
-router.delete('/remove/:id', function(req, res, next) {
-  if (faker.delete(req.params.id)) {
-    res.status(200).send('success');
+router.delete('/delete/:id', function(req, res, next) {
+  if (faker.deleteItem(parseInt(req.params.id))) {
+    res.status(200).json(parseInt(req.params.id));
   } else {
     res.status(500).send('error');
   }
@@ -98,7 +98,7 @@ router.put('/update/:id', function(req, res, next) {
   }
 });
 
-router.delete('/clear-all', function(req, res, next) {
+router.delete('/killAll', function(req, res, next) {
   faker.killThemAll();
   if (faker.getThemAll().length === 0) {
     res.status(200).send('success');

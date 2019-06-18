@@ -7,7 +7,7 @@ export function fetchMessages() {
     dispatch(fetchMessagesBegin());
     return getMessages()
       .then(res => dispatch(fetchMessagesSuccess(res.data)))
-      .catch(error => fetchMessagesFailure(error));
+      .catch(error => dispatch(fetchMessagesFailure(error)));
   };
 }
 
@@ -91,7 +91,7 @@ export const clearAllMessages = () => {
 export const deleteAllMessages = () => {
   return axios({
     method: 'delete',
-    url: 'messages/clear-all',
+    url: 'messages/killAll',
     timeout: 5000
   })
     .then(res => res)
@@ -150,6 +150,40 @@ export const editMessageFailure = error => ({
   payload: { error }
 });
 
+//_________________________________________________________________
+// delete a message
+export const removeMessage = id => {
+  return dispatch => {
+    dispatch(removeMessageBegin());
+    return deleteMessage(id)
+      .then(res => dispatch(removeMessageSuccess(res.data)))
+      .catch(err => dispatch(removeMessageFailure(err)));
+  };
+};
+
+export const deleteMessage = id => {
+  return axios
+    .delete(`messages/delete/${id}`)
+    .then(res => res)
+    .catch(err => err);
+};
+
+export const REMOVE_MESSAGE_BEGIN = 'REMOVE_MESSAGE_BEGIN';
+export const removeMessageBegin = () => ({
+  type: REMOVE_MESSAGE_BEGIN
+});
+
+export const REMOVE_MESSAGE_SUCCESS = 'REMOVE_MESSAGE_SUCCESS';
+export const removeMessageSuccess = id => ({
+  type: REMOVE_MESSAGE_SUCCESS,
+  payload: { id }
+});
+
+export const REMOVE_MESSAGE_FAILURE = 'REMOVE_MESSAGE_FAILURE';
+export const removeMessageFailure = error => ({
+  type: REMOVE_MESSAGE_FAILURE,
+  payload: { error }
+});
 
 
 

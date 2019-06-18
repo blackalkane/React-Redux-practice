@@ -4,25 +4,22 @@ import FormItem from '../FormItem/FormItem';
 import { fetchMessages } from '../../actions';
 import './FormList.css';
 class FormList extends Component {
+
   componentDidMount() {
     this.props.dispatch(fetchMessages());
   }
 
   render() {
-    const { messages, error, fetching } = this.props;
-    if (error) {
-      return <div>Error! {error.message}</div>;
-    }
-    if (fetching) {
-      return <div>fetching....</div>;
-    }
+    const { messages } = this.props;
+    
     return (
       <div className="row justify-content-center">
         <div className="col-12">
           <div className="content__messages">
+          <h5> click the message to kill it</h5>
             <ul className="list-group">
               {messages.map(message => (
-                <FormItem key={message.id} msg={message.data.msg} />
+                <FormItem key={message.id} id={message.id} msg={message.data.msg} />
               ))}
             </ul>
           </div>
@@ -33,9 +30,7 @@ class FormList extends Component {
 }
 
 const mapSateToProps = state => ({
-  messages: state.messages.items,
-  fetching: state.messages.fetching,
-  error: state.messages.error
+  messages: state.messages.items
 });
 
 export default connect(mapSateToProps)(FormList);

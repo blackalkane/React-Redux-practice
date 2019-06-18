@@ -13,11 +13,11 @@ class Content extends Component {
               <div className="card-body">
                 <div className="d-inline-block">
                   <Form />
+                  <FunctionalButton />
                 </div>
               </div>
             </div>
           </div>
-          <FunctionalButton />
           <FormList />
         </div>
     )
