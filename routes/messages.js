@@ -24,6 +24,15 @@ class Store {
     this.index = 4;
   }
 
+  getThemAll() {
+    return this.data;
+  }
+
+  killThemAll() {
+    this.index = 0;
+    this.data = [];
+  }
+
   addItem(value) {
     const obj = {
       id: this.index,
@@ -34,7 +43,7 @@ class Store {
     return obj;
   }
   
-  update(id, value) {
+  editItem(id, value) {
     var index;
     if (this.data.length === 0) return false;
     for (var i = 0; i < this.data.length; i++) {
@@ -52,15 +61,6 @@ class Store {
     }
     this.data.splice(index, 1);
     return true;
-  }
-
-  killThemAll() {
-    this.index = 0;
-    this.data = [];
-  }
-
-  getThemAll() {
-    return this.data;
   }
 }
 module.exports = Store;
@@ -91,7 +91,7 @@ router.delete('/delete/:id', function(req, res, next) {
 
 router.put('/update/:id', function(req, res, next) {
   const id = parseInt(req.params.id);
-  if (faker.update(id, req.body)) {
+  if (faker.editItem(id, req.body)) {
     res.status(200).send('success');
   } else {
     res.status(500).send('error');
