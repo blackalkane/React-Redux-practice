@@ -1,0 +1,10 @@
+.content__messages {
+    margin: 1em 0 1em 0;
+  }
+
+  .list-group {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
