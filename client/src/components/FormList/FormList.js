@@ -9,9 +9,13 @@ class FormList extends Component {
     this.props.dispatch(fetchMessages());
   }
 
+  componentDidUpdate() {
+    this.props.dispatch(fetchMessages());
+  }
+
   render() {
     const { messages } = this.props;
-    
+
     return (
       <div className="row justify-content-center">
         <div className="col-12">
