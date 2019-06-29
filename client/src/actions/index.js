@@ -1,7 +1,7 @@
 import axios from 'axios';
-
+import uuid from 'uuid';
 //_________________________________________________________________
-// fetch all the messages 
+// fetch all the messages
 export function fetchMessages() {
   return dispatch => {
     dispatch(fetchMessagesBegin());
@@ -43,7 +43,7 @@ export const addMessage = message => {
   return dispatch => {
     dispatch(addMessageBegin());
     return postMessage(message)
-      .then(res => dispatch(addMessageSuccess(res.data)))
+      .then(res => dispatch(addMessageSuccess({id: res.data.id, data: { msg: res.data.msg}})))
       .catch(err => dispatch(addMessageFailure(err)));
   };
 };
@@ -54,6 +54,7 @@ export const postMessage = message => {
     url: '/messages/add',
     timeout: 18000,
     data: {
+      id: uuid(),
       msg: message
     }
   })
@@ -184,9 +185,3 @@ export const removeMessageFailure = error => ({
   type: REMOVE_MESSAGE_FAILURE,
   payload: { error }
 });
-
-
-
-
-
-

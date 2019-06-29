@@ -8,7 +8,7 @@ const FormItem = ({ id, msg, dispatch }) => {
     <div>
       <li className="form_item__component list-group-item form-control" key={id} onClick={() => dispatch(removeMessage(id))}>{id}: {msg}</li>
     </div>
-    
+
     );
 }
 
