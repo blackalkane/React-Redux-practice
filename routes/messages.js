@@ -38,7 +38,7 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox-dzdm
    });
    // delete all
    router.delete('/killAll', function(req, res, next) {
-     dbase.collection('Messages').remove({}, function(err, message) {
+     dbase.collection('Messages').drop({}, function(err, message) {
        if (err) {
          console.log(err);
        } else {
