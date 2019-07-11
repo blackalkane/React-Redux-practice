@@ -1,19 +1,7 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Messages = new Schema(
-  { id: Number,
-    data: {
-      msg: String} },
-  { collection: 'Messages'}
-);
-
-let MessagesModel = mongoose.model('Messages', Messages);
 const express = require('express');
 const router = express.Router();
-
 var MongoClient = require('mongodb').MongoClient;
-
-var messages = [];
 
 MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox-dzdms.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true }, function(err, db) {
@@ -34,7 +22,6 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox-dzdm
       if (err){
         console.log(err);
       } else{
-      messages.push(req.body);
       res.json(req.body);
     }
   });
@@ -45,20 +32,17 @@ MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox-dzdm
        if (err){
          console.log(err);
        } else{
-         messages = messages.filter((message) => {
-           return parseFloat(message.id) !== parseFloat(req.params.id);
-         });
          res.json(req.param.id);
        }
      });
    });
    // delete all
    router.delete('/killAll', function(req, res, next) {
-     dbase.collection('Messages').drop({}, function(err, message) {
+     dbase.collection('Messages').remove({}, function(err, message) {
        if (err) {
          console.log(err);
        } else {
-         messages = [];
+         console.log("gg");
        }
      })
    });
