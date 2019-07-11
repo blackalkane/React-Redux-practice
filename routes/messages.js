@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect('mongodb://m001-student:m001-mongodb-basics@ds349857.mlab.com:49857/heroku_p5bdrkqr',
+MongoClient.connect('mongodb://herokuhost/m001-student:m001-mongodb-basics@ds349857.mlab.com:49857/heroku_p5bdrkqr',
   { useNewUrlParser: true }, function(err, db) {
   var dbase = db.db("Messages");
   // fetch
