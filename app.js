@@ -12,4 +12,4 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/messages', messagesRouter);
 
-app.listen(process.env.PORT || 9000, () => console.log(`Server running on port ${port}`));
+app.listen(process.env.PORT || 9000, () => console.log("Server running on port 9000"));
