@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox-dzdms.mongodb.net/test?retryWrites=true&w=majority',
+MongoClient.connect(process.env.MONGODB_URI || 'mongodb+srv://m001-student:m001-mongodb-basics@sandbox-dzdms.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true }, function(err, db) {
   var dbase = db.db("Messages");
   // fetch
