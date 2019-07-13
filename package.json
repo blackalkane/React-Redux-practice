@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm install && npm run client-build && npm run server",
     "server": "node app.js",
-    "client-build": "cd client && yarn install && yarn build",
+    "client-build": "cd client && npm install && npm build",
     "dev": "nodemon app.js"
   },
   "dependencies": {
